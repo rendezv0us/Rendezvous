@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+body{
+    background: url("https://openclipart.org/image/2400px/svg_to_png/227821/Wireframe-Earth-Globe.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.page-messages {
+    padding-right: 50px;
+    padding-left: 50px;
+}
