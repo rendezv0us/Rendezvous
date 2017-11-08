@@ -8,18 +8,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <% if current_user != nil && current_user.secret == true %>
+  <body style="background: url(<%= image_url('Wireframe-Earth-Globe-white.png') %>) no-repeat center center fixed; background-color: #2E2F30;">
+  <% else %>
   <body>
+  <% end %>
 
   <% if current_user != nil %>
     <!-- Nav bar -->
     <nav class="navbar navbar-default">
       <!-- Styling for secret and non secret users -->
-      <% if current_user.secret == true %>
-      <div class="container-fluid" style="background-color: #202020;">
-      <% else %>
       <div class="container-fluid">
-      <% end %>
-
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -29,11 +28,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- About/Page -->
-          <% if current_user.secret == true %>
-          <%= link_to("Rendezvous", "", :class => 'navbar-brand', :style=>'color:white;') %>
-          <% else %>
           <%= link_to("Rendezvous", "", :class => 'navbar-brand') %>
-          <% end %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,11 +36,7 @@
           <ul class="nav navbar-nav">
             <!--  Drop Down Menu -->
             <li class="dropdown">
-              <% if current_user.secret == true %>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white;">Topics<span class="caret"></span></a>
-              <% else %>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Topics<span class="caret"></span></a>
-              <% end %>
               <ul class="dropdown-menu">
                 <li><%= link_to("Art", "") %></li>
                 <li><%= link_to("Animals", "") %></li>
