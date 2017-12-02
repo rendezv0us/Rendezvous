@@ -1,0 +1,61 @@
+<div class="container-fluid text-center" style="padding-bottom: 50px;">
+  <div clas="row text-center">
+    <div class="col text-center">
+      <!--  -->
+      <div class="text-center">
+        <!--  -->
+        <div class="container">
+          <ul class="list-group center text-center ">
+            <li class="list-group-item">
+              <% if current_user != nil %>
+                  <h1><%= @page_title %></h1>
+                  <%= form_for(@post) do |f| %>
+
+                      <% if @post.errors.any? %>
+                          <% @post.errors.full_messages.each do |msg| %>
+                              <div class="alert alert-danger"><%= msg %></div>
+                          <% end %>
+                      <% end %>
+
+                      <div class="form-seperation">
+                        <%= f.label :title, :class => 'pull-left' %>
+                        <%= f.text_field(:title, {:class => 'form-control'}) %>
+                      </div>
+
+                      <div class="form-seperation">
+                        <a onclick="getLocation()">
+                        <%= f.label :coordinate, "Location (click to locate)", :class => 'pull-left' %>
+                        </a>
+                        <%= f.text_field(:coordinate, {:class => 'form-control', id: "coordinate"}) %>
+                      </div>
+
+                      <div class="form-seperation">
+                        <%= f.label :body, :class => 'pull-left' %> <br>
+                        <%= f.text_area(:body, {:class => 'form-control'}) %>
+                      </div>
+
+                      <div style="padding-top: 10px;">
+                        <%= f.submit "Submit", :class => 'btn btn-success' %>
+                      </div>
+                  <% end %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="application/javascript">
+    var x = document.getElementById("coordinate");
+    function getLocation() {
+        if (navigator.geolocation) {
+            x.value = "Locating..."
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+    }
+    function showPosition(position) {
+        x.value = position.coords.latitude + ", " + position.coords.longitude
+    }
+</script>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner: MyString
+  title: MyString
+  body: MyString
+  coordinate: MyString
+  private: false
+
+two:
+  owner: MyString
+  title: MyString
+  body: MyString
+  coordinate: MyString
+  private: false

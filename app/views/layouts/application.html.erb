@@ -28,7 +28,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- About/Page -->
-          <%= link_to("Rendezvous", "", :class => 'navbar-brand') %>
+          <%= link_to("Rendezvous", home_index_path, :class => 'navbar-brand') %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,6 +49,7 @@
           <!-- Login Button -->
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
+                <%= link_to('Post', new_post_path, :class => 'btn btn-default') %>
                 <%= link_to current_user.email, "", :class => 'btn navbar-btn btn-default float-right' %>
                 <%= link_to("Logout", destroy_user_session_path, :method => :delete, :class => 'btn navbar-btn btn-danger float-right')%>
             <% else %>
