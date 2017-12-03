@@ -1,29 +1,47 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @post.owner %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
-
-<p>
-  <strong>Coordinate:</strong>
-  <%= @post.coordinate %>
-</p>
-
-<p>
-  <strong>Private:</strong>
-  <%= @post.private %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="container-fluid text-center" style="padding-bottom: 50px;">
+  <div clas="row text-center">
+    <div class="col text-center">
+      <!--  -->
+      <div class="text-center">
+        <!--  -->
+        <div class="container">
+          <ul class="list-group center text-center ">
+            <li class="list-group-item">
+              <div class="container-fluid">
+                <h3><%= @post.title %></h3>
+              </div>
+              by: <strong><%= @post.owner %></strong>
+              on: <%= @post.created_at.strftime('%m-%d-%Y') %>
+            </li>
+            <li class="list-group-item">
+              <div class="post-body">
+                <div class="container-fluid">
+                  <p class="body-text"><%= @post.body %></p>
+                </div>
+              </div>
+            </li>
+            <!-- Display content of post -->
+            <li class="list-group-item" style="border-top: none;">
+              <!-- Display who has posted the post -->
+              <div class="container-fluid">
+                <p class="pull-left">
+                  Location: <%= @post.coordinate %>
+                </p>
+                <!-- Add edit or delete buttons if the current user is the owner of the post -->
+                <% if(current_user != nil && @post.owner == current_user.email) %>
+                    <div class="pull-right">
+                      <%= link_to "Edit", edit_post_path(:id => @post.id), :class => "btn btn-default"%>
+                      <%= link_to "Delete", post_path(@post),
+                                  method: :delete,
+                                  data: {confirm: 'Are you sure?'},
+                                  :class => "btn btn-default"%>
+                    </div>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

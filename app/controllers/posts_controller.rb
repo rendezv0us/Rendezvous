@@ -15,10 +15,16 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    if current_user == nil
+      redirect_to explore_home_url
+    end
   end
 
   # GET /posts/1/edit
   def edit
+    if current_user == nil || Post.find(params[:id]).owner != current_user.email
+      redirect_to explore_home_url
+    end
   end
 
   # POST /posts
