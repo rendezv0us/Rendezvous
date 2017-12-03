@@ -10,6 +10,9 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    if !current_user.secret && Post.find(params[:id]).private
+      redirect_to explore_home_url
+    end
   end
 
   # GET /posts/new
