@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :posts
   get 'explore/home'
+  get 'explore/profile'
   get 'home/index'
   root 'home#index'
 

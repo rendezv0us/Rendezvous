@@ -24,11 +24,13 @@
             <li class="list-group-item" style="border-top: none;">
               <!-- Display who has posted the post -->
               <div class="container-fluid">
+                <% if @post.coordinate != "" %>
                 <p class="pull-left">
                   Location: <%= @post.coordinate %>
                 </p>
+                <% end %>
                 <!-- Add edit or delete buttons if the current user is the owner of the post -->
-                <% if(current_user != nil && @post.owner == current_user.email) %>
+                <% if(current_user != nil && @post.owner == current_user.username) %>
                     <div class="pull-right">
                       <%= link_to "Edit", edit_post_path(:id => @post.id), :class => "btn btn-default"%>
                       <%= link_to "Delete", post_path(@post),

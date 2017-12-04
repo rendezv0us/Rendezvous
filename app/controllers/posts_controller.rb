@@ -25,7 +25,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    if current_user == nil || Post.find(params[:id]).owner != current_user.email
+    if current_user == nil || Post.find(params[:id]).owner != current_user.username
       redirect_to explore_home_url
     end
   end
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if current_user
-      @post.owner = current_user.email
+      @post.owner = current_user.username
       @post.private = current_user.secret
     else
       return

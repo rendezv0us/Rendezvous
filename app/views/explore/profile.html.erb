@@ -3,17 +3,17 @@
     <div class="col text-center">
       <!--  -->
       <% if current_user.secret %>
-      <h1 style = "color: white;">Welcome to Rendezvous</h1>
+          <h1 style = "color: white;">Your Posts</h1>
       <% else %>
-      <h1 style = "color: black;">Welcome to Rendezvous</h1>
-    <% end %>
+          <h1 style = "color: black;">Your Posts</h1>
+      <% end %>
       <!--  -->
       <div class="text-center">
         <!--  -->
         <div class="container">
           <ul class="list-group center text-center ">
             <li class="list-group-item"> <h4>Recent Posts</h4> </li>
-            <% @posts.first(100).each do |post| %>
+            <% @posts.each do |post| %>
                 <li class="list-group-item">
                   <div class="container-fluid">
                     <%= link_to post.title.capitalize, post_path(post) %>

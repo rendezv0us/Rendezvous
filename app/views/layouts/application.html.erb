@@ -49,8 +49,12 @@
           <!-- Login Button -->
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-                <%= link_to('Post', new_post_path, :class => 'btn btn-default') %>
-                <%= link_to current_user.email, "", :class => 'btn navbar-btn btn-default float-right' %>
+                <%= link_to('Create Post', new_post_path, :class => 'btn btn-default') %>
+                <% if !current_page?(explore_profile_path) %>
+                <%= link_to current_user.username, explore_profile_path, :class => 'btn navbar-btn btn-default float-right' %>
+                <% else %>
+                <%= link_to "Edit Profile", edit_user_registration_path, :class => 'btn navbar-btn btn-default float-right' %>
+                <% end %>
                 <%= link_to("Logout", destroy_user_session_path, :method => :delete, :class => 'btn navbar-btn btn-danger float-right')%>
             <% else %>
                 <%= link_to('Login', new_user_session_path, :class => 'btn navbar-btn btn-success float-right') %>
