@@ -1,0 +1,26 @@
+<%= form_for(@m) do |f| %>
+    <% if @m.errors.any? %>
+        <% @m.errors.full_messages.each do |msg| %>
+            <div class="alert alert-danger"><%= msg %></div>
+        <% end %>
+    <% end %>
+
+    <div class="form-seperation">
+      <%= f.label :sender, :class => 'pull-left' %>
+      <%= f.text_field(:sender, {:class => 'form-control'}) %>
+    </div>
+
+    <div class="form-seperation">
+      <%= f.label :receiver, :class => 'pull-left' %>
+      <%= f.text_field(:receiver, {:class => 'form-control'}) %>
+    </div>
+
+    <div class="form-seperation">
+      <%= f.label :content, :class => 'pull-left' %> <br>
+      <%= f.text_area(:content, {:class => 'form-control'}) %>
+    </div>
+
+    <div style="padding-top: 10px;">
+      <%= f.submit "Submit", :class => 'btn btn-success' %>
+    </div>
+<% end %>

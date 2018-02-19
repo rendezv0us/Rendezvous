@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203215659) do
+ActiveRecord::Schema.define(version: 20180219045603) do
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "sender"
+    t.string   "receiver"
+    t.string   "content"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "owner"

@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+  get 'messages/index'
+
+  get 'messages/new'
+
+  get 'messages/edit'
+
   resources :posts
   get 'explore/home'
   get 'explore/profile'
   get 'home/index'
   root 'home#index'
+
+  resources :messages
 
   devise_for :users
 
