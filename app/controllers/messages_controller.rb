@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-
+    @m = Message.find(params[:id])
   end
 
   def create
@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @m.save
-        format.html { redirect_to @m, notice: 'Post was successfully created.' }
+        format.html { redirect_to @m, notice: 'Message was successfully sent.' }
         format.json { render :show, status: :created, location: @m }
       else
         format.html { render :new }
