@@ -20,6 +20,8 @@ class MessagesController < ApplicationController
       return
     end
 
+    @m.convo_id = @m.sender + '_' + @m.receiver
+
     respond_to do |format|
       if @m.save
         format.html { redirect_to @m, notice: 'Message was successfully sent.' }
@@ -36,15 +38,13 @@ class MessagesController < ApplicationController
 
 
   private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_m
+    @m = Message.find(params[:id])
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_m
-      @m = Message.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:message).permit(:sender, :receiver, :content)
-    end
-
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:message).permit(:sender, :receiver, :content)
+  end
 end

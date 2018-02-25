@@ -4,8 +4,7 @@ class CreateMessages < ActiveRecord::Migration[5.0]
       t.string :sender
       t.string :receiver
       t.string :content
-      t.timestamp :date
-
+      t.string :convo_id
       t.timestamps
     end
   end

@@ -13,7 +13,7 @@
         <div class="container">
           <ul class="list-group center text-center ">
             <li class="list-group-item"> <h4>Recent Posts</h4> </li>
-            <% @posts.each do |post| %>
+            <% @p.each do |post| %>
                 <li class="list-group-item">
                   <div class="container-fluid">
                     <%= link_to post.title.capitalize, post_path(post) %>
@@ -23,6 +23,38 @@
           </ul>
         </div>
       </div>
+
+      <!--  -->
+      <% if current_user.secret %>
+          <h1 style = "color: white;">Your Messages</h1>
+      <% else %>
+          <h1 style = "color: black;">Your Messages</h1>
+      <% end %>
+      <!--  -->
+      <div class="text-center">
+        <!--  -->
+        <div class="container">
+          <ul class="list-group center text-center ">
+            <li class="list-group-item"> <h4>Recent Messages</h4> </li>
+            <% @latest.each do |mes| %>
+                <li class="list-group-item">
+                  <div class="container-fluid">
+                    <b>
+                    <% if mes.sender == @current_user.username %>
+                        <%= mes.receiver %>
+                    <% elsif mes.receiver == @current_user.username %>
+                        <%= mes.sender %>
+                    <% end %>
+                    :</b>
+                    <%= link_to mes.content, message_path(mes) %>
+                  </div>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+
     </div>
   </div>
 </div>

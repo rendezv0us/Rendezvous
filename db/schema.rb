@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180219045603) do
     t.string   "sender"
     t.string   "receiver"
     t.string   "content"
-    t.datetime "date"
+    t.string   "convo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
