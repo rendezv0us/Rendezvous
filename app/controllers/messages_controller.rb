@@ -9,7 +9,15 @@ class MessagesController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @new_m = Message.new
     @m = Message.find(params[:id])
+    @all = Message.where(convo_id: gen_convo_id(@m.sender, @m.receiver))
+    @all = @all.sort_by(&:created_at)
+  end
+
+  def update
+
+    create
   end
 
   def create
@@ -20,7 +28,11 @@ class MessagesController < ApplicationController
       return
     end
 
-    @m.convo_id = @m.sender + '_' + @m.receiver
+    if @m.content == "" || @m.receiver == ""
+      return
+    end
+
+    @m.convo_id = gen_convo_id(@m.sender, @m.receiver)
 
     respond_to do |format|
       if @m.save
@@ -46,5 +58,15 @@ class MessagesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     params.require(:message).permit(:sender, :receiver, :content)
+  end
+
+  def gen_convo_id(sender, receiver)
+    @key = ''
+    if sender > receiver
+      @key = "#{receiver}_#{sender}"
+    else
+      @key = "#{sender}_#{receiver}"
+    end
+    return @key
   end
 end
