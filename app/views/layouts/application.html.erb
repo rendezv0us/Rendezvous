@@ -50,6 +50,7 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
                 <%= link_to('Create Post', new_post_path, :class => 'btn btn-default') %>
+                <%= link_to('Message', new_message_path, :class => 'btn btn-default') %>
                 <% if !current_page?(explore_profile_path) %>
                 <%= link_to current_user.username, explore_profile_path, :class => 'btn navbar-btn btn-default float-right' %>
                 <% else %>
@@ -72,13 +73,13 @@
   <% end %>
 
   <!-- Messages and Alerts -->
-  <% if !notice.nil? %>
+  <% if !notice.nil? && notice != "Message was successfully sent." %>
       <div class="container-fluid text-center" style="padding-top: 50px;">
         <div clas="row text-center">
           <div class="col text-center">
             <div class="text-center">
               <div class="container alert alert-success">
-                <%= notice %>
+                  <%= notice %>
               </div>
             </div>
           </div>

@@ -1,12 +1,14 @@
 <div class="text-center">
   <!--  -->
   <div class="container">
-    <ul class="list-group center text-center ">
+    <ul class="list-group center text-center">
       <li class="list-group-item">
         <h4>
         <%= @convo_name = @m.sender == current_user.username ? @m.receiver : @m.sender %>
         </h4>
       </li>
+
+      <div class="messenger" id="messenger">
       <% @all.first(100).each_with_index do |mes, i| %>
           <li class="list-group-item" style="border-top: 0px; border-bottom: 0px; padding-bottom: 0px;">
             <div class="container-fluid">
@@ -27,9 +29,11 @@
             </div>
           </li>
       <% end %>
+      </div>
+
       <li class="list-group-item">
         <div class="container-fluid">
-          <%= form_for(@new_m) do |f| %>
+          <%= form_for(@new_m, remote: true) do |f| %>
               <% if @new_m.errors.any? %>
                   <% @new_m.errors.full_messages.each do |msg| %>
                       <div class="alert alert-danger"><%= msg %></div>
@@ -43,11 +47,11 @@
               </div>
 
               <div class="form-seperation">
-                <%= f.text_field(:content, {:class => 'form-control'}) %>
+                <%= f.text_field(:content, :required => true, :class => 'form-control') %>
               </div>
 
               <div style="padding-top: 10px;">
-                <%= f.submit "Submit", :class => 'btn btn-default form-control' %>
+                <%= f.submit "Send", :class => 'btn btn-default form-control' %>
               </div>
           <% end %>
         </div>
@@ -55,3 +59,35 @@
     </ul>
   </div>
 </div>
+
+
+<script type="application/javascript">
+    function pageScroll() {
+        var myDiv = document.getElementById("messenger");
+        myDiv.scrollTop = myDiv.scrollHeight;
+    }
+    window.onload = pageScroll();
+
+    var incomingRequests = function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', "/messages/check/" + "<%= @m.convo_id %>", true);
+        xhr.send();
+        xhr.addEventListener("readystatechange", processRequest, false);
+
+        function processRequest(e) {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = JSON.parse(xhr.responseText);
+                renderResults(response.size);
+            }
+        }
+    }
+
+    var renderResults = function(response) {
+        if (response > 0 && response > <%= @all.size %>) {
+              location = location;
+        }
+    }
+
+    incomingRequests()
+    setInterval(incomingRequests, 5000)
+</script>

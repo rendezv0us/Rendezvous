@@ -13,11 +13,11 @@ class ExploreController < ApplicationController
     @m = Message.where("Messages.convo_id LIKE ?", "%#{current_user.username}%")
 
     @latest = []
-    @m.sort_by(&:created_at).reverse.each do |mes|
-      if @latest.count { |each| each.convo_id == mes.convo_id }.zero?
+    @last_id = ''
+    @m.sort_by {|x| [x.convo_id, x.created_at] }.reverse.each_with_index do |mes, i|
+      if i == 0 || @last_id != mes.convo_id
         @latest.push(mes)
-      else
-        break
+        @last_id = mes.convo_id
       end
     end
 

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'messages/edit'
 
+  get 'messages/check/:convo' => 'messages#check'
+
   resources :posts
   get 'explore/home'
   get 'explore/profile'

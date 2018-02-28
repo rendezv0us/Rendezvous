@@ -1,9 +1,14 @@
 class MessagesController < ApplicationController
+
   def index
   end
 
   def new
-    @m = Message.new()
+    @m = Message.new
+  end
+
+  def check
+    render json: {size: Message.where(convo_id: params[:convo]).size}
   end
 
   # GET /posts/1
@@ -11,6 +16,10 @@ class MessagesController < ApplicationController
   def show
     @new_m = Message.new
     @m = Message.find(params[:id])
+    if  @m.convo_id != gen_convo_id(@m.sender, current_user.username) &&
+        @m.convo_id != gen_convo_id(current_user.username, @m.receiver)
+      redirect_to home_index_path
+    end
     @all = Message.where(convo_id: gen_convo_id(@m.sender, @m.receiver))
     @all = @all.sort_by(&:created_at)
   end
