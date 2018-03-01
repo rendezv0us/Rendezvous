@@ -3,3 +3,4 @@ log/development.log
 tmp/restart.txt
 .DS_Store
 tmp/
+db/development.sqlite3

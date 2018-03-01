@@ -10,6 +10,7 @@
 
       <div class="messenger" id="messenger">
       <% @all.first(100).each_with_index do |mes, i| %>
+
           <li class="list-group-item" style="border-top: 0px; border-bottom: 0px; padding-bottom: 0px;">
             <div class="container-fluid">
               <% if mes.sender == current_user.username %>
@@ -19,15 +20,17 @@
             <% end %>
             </div>
           </li>
-          <li class="list-group-item" style="border-top: 0px; border-bottom: 0px; padding-top: 0px;">
+
+          <li class="list-group-item" style="border-top: 0px; border-bottom: 0px; padding-top: 1px;">
             <div class="container-fluid">
               <% if mes.sender == current_user.username %>
-                <i class="pull-right"><%= mes.created_at.strftime("%I:%M %p %b %d") %></i>
+                  <i class="pull-right"><%= mes.created_at.strftime("%I:%M %p %b %d") %></i>
               <% else %>
                   <i class="pull-left"><%= mes.created_at.strftime("%I:%M %p %b %d") %></i>
-            <% end %>
+              <% end %>
             </div>
           </li>
+
       <% end %>
       </div>
 
@@ -45,9 +48,9 @@
                 <%= f.label :receiver, :class => 'pull-left' %>
                 <%= f.text_field(:receiver, :value => @convo_name, :class => 'form-control') %>
               </div>
-
               <div class="form-seperation">
-                <%= f.text_field(:content, :required => true, :class => 'form-control') %>
+                <a onclick="getLocation()" class="pull-left">Location (click to send location)</a>
+                <%= f.text_field(:content, :required => true, :class => 'form-control', id: 'message', :autocomplete => :off) %>
               </div>
 
               <div style="padding-top: 10px;">
@@ -62,6 +65,17 @@
 
 
 <script type="application/javascript">
+    var x = document.getElementById("message");
+    function getLocation() {
+        if (navigator.geolocation) {
+            x.value = "Locating..."
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+    }
+    function showPosition(position) {
+        x.value = position.coords.latitude + ", " + position.coords.longitude
+    }
+
     function pageScroll() {
         var myDiv = document.getElementById("messenger");
         myDiv.scrollTop = myDiv.scrollHeight;

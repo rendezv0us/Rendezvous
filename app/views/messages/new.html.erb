@@ -1,6 +1,10 @@
 <div class="text-center">
   <!--  -->
-  <h1>Message</h1>
+  <% if current_user.secret %>
+    <h1 style="color: white;">Message</h1>
+  <% else %>
+    <h1>Message</h1>
+  <% end %>
   <div class="container" style="max-width: 800px;">
     <ul class="list-group center text-center">
       <li class="list-group-item">
