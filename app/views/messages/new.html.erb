@@ -17,18 +17,18 @@
               <% end %>
 
               <!-- Hidden field for receiver of message -->
-              <div class="form-seperation">
+              <div class="form-seperation" style="padding-top: 10px;">
                 <%= f.label :receiver, :class => 'pull-left' %>
                 <%= f.text_field(:receiver, :value => @convo_name, :class => 'form-control') %>
               </div>
 
-              <div class="form-seperation">
+              <div class="form-seperation" style="padding-top: 10px;">
                 <%= f.label :content, :class => 'pull-left' %> <br>
                 <%= f.text_field(:content, :required => true, :class => 'form-control') %>
               </div>
 
-              <div style="padding-top: 10px;">
-                <%= f.submit "Send", :class => 'btn btn-default form-control' %>
+              <div style="padding-top: 15px;">
+                <%= f.submit "Send", :class => 'button btn btn-default form-control' %>
               </div>
           <% end %>
         </div>

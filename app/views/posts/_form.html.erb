@@ -20,20 +20,20 @@
                   <%= f.text_field(:title, {:class => 'form-control'}) %>
                 </div>
 
-                <div class="form-seperation">
+                <div class="form-seperation" style="padding-top: 10px;">
                   <a onclick="getLocation()">
                   <%= f.label :coordinate, "Location (click to locate)", :class => 'pull-left' %>
                   </a>
                   <%= f.text_field(:coordinate, {:class => 'form-control', id: "coordinate"}) %>
                 </div>
 
-                <div class="form-seperation">
+                <div class="form-seperation" style="padding-top: 10px;">
                   <%= f.label :body, :class => 'pull-left' %> <br>
                   <%= f.text_area(:body, {:class => 'form-control'}) %>
                 </div>
 
                 <div style="padding-top: 10px;">
-                  <%= f.submit "Submit", :class => 'btn btn-success' %>
+                  <%= f.submit "Submit", :class => 'button btn btn-success form-control' %>
                 </div>
               <% end %>
             </li>

@@ -1,6 +1,7 @@
-<% @page_title = "Edit Post" %>
 
-<%= render 'form', post: @post %>
+<h2><% @page_title = "Edit Post" %></h2>
+<hr>
+<div>
+  <%= render 'form', post: @post %>
+</div>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
