@@ -2,7 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.row {
+.col-xs-6 {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.col{
   padding-left: 50px;
   padding-right: 50px;
 }
