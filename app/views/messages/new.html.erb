@@ -19,12 +19,12 @@
 
               <!-- Hidden field for receiver of message -->
               <div class="form-seperation" style="padding-top: 10px;">
-                <%= f.label :receiver, :class => 'pull-left' %>
+                <%= f.label "To", :class => 'pull-left' %>
                 <%= f.text_field(:receiver, :value => @convo_name, :class => 'form-control') %>
               </div>
 
               <div class="form-seperation" style="padding-top: 10px;">
-                <%= f.label :content, :class => 'pull-left' %> <br>
+                <%= f.label "Message", :class => 'pull-left' %> <br>
                 <%= f.text_field(:content, :required => true, :class => 'form-control') %>
               </div>
 
