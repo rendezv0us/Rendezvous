@@ -18,6 +18,10 @@ body{
     background: url("Wireframe-Earth-Globe.png") no-repeat center center fixed;
 }
 
+textarea {
+    resize: vertical;
+}
+
 .page-messages {
     padding-right: 50px;
     padding-left: 50px;
@@ -31,4 +35,48 @@ body{
     color: #F7F7F7;
     border: none;
     font-style: oblique;
+}
+.button:hover {
+    background-color: #608181;
+    color: #F7F7F7;
+}
+
+.delete-btn {
+     background-color: #df4845;
+     color: #F7F7F7;
+     border: none;
+     font-style: oblique;
+ }
+
+.delete-btn:hover {
+    background-color: #c32820;
+    color: #F7F7F7;
+}
+
+.btn-cancel {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 7px 20px;
+    background-color: #dfdfdf;
+    border: none;
+    font-style: oblique;
+}
+
+.btn-cancel:hover {
+    background-color: #cccccc;
+}
+
+.btn-update {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 7px 57px;
+    background-color: #197fb4;
+    color: #F7F7F7;
+    border: none;
+    font-style: oblique;
+}
+
+.btn-update:hover {
+    background-color: #51a0c9;
+    color: #F7F7F7;
 }
