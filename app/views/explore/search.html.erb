@@ -1,0 +1,28 @@
+<div class="container-fluid text-center" style="padding-bottom: 50px;">
+  <div clas="row text-center">
+    <div class="col text-center">
+      <!--  -->
+      <% if current_user.secret %>
+          <h1 style = "color: white;">Welcome to Rendezvous</h1>
+      <% else %>
+          <h1 style = "color: black;">Welcome to Rendezvous</h1>
+      <% end %>
+      <!--  -->
+      <div class="text-center">
+        <!--  -->
+        <div class="container">
+          <ul class="list-group center text-center ">
+            <li class="list-group-item"> <h4> Search results for: '<%= @search_word %>' </h4> </li>
+            <% @post_matches.first(100).each do |post| %>
+                <li class="list-group-item">
+                  <div class="container-fluid">
+                    <%= link_to post.title.capitalize, post_path(post) %>
+                  </div>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

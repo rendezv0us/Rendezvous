@@ -22,4 +22,10 @@ class ExploreController < ApplicationController
     end
 
   end
+
+  def search
+    @search_word = params[:search_word]
+    @post_matches = Post.where("title like ? OR owner=?", "%#{@search_word}%", @search_word)
+    @user_matches = User.where("username like ?", "#{@search_word}%")
+  end
 end

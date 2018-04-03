@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
 
   def new
     @m = Message.new
+    @alert = session[:message_alert]
+    session[:message_alert] = nil
   end
 
   def check
@@ -31,7 +33,11 @@ class MessagesController < ApplicationController
 
   def create
     @m = Message.new(post_params)
-    if current_user
+    if User.where(username: @m.receiver).empty?
+      session[:message_alert] = 'Could not find user with username: "' + @m.receiver + '"'
+      redirect_to messages_new_path
+      return
+    elsif current_user
       @m.sender = current_user.username
     else
       return

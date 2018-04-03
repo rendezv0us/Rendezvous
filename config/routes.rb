@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get 'explore/home'
   get 'explore/profile'
   get 'home/index'
+  post 'explore/search' => 'explore#search', as: :explore_search
+  get 'explore/search/:search_word' => 'explore#search', as: :search_page
+  get 'explore/search' => 'explore#home'
+
   root 'home#index'
 
   resources :messages
