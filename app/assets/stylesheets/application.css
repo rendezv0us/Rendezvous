@@ -22,3 +22,13 @@ body{
     padding-right: 50px;
     padding-left: 50px;
 }
+
+.button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 7px 57px;
+    background-color: darkslategray;
+    color: #F7F7F7;
+    border: none;
+    font-style: oblique;
+}
