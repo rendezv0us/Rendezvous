@@ -2,12 +2,14 @@
   <div class="row text-center">
     <div class="col text-center">
       <!--  -->
+      <br>
       <div class="text-center">
         <!--  -->
-        <div class="container">
-          <ul class="list-group center text-center ">
-            <li class="list-group-item">
+        <div class="container" style="max-width: 800px;">
+          <ul class="list-group center text-center">
+            <li class="list-group-item" style="padding-left: 30px; padding-right: 30px;">
               <h1><%= @page_title %></h1>
+              <hr>
               <%= form_for(@post) do |f| %>
                 <% if @post.errors.any? %>
                     <% @post.errors.full_messages.each do |msg| %>
@@ -32,7 +34,7 @@
                   <%= f.text_area(:body, {:class => 'form-control'}) %>
                 </div>
 
-                <div style="padding-top: 10px;">
+                <div style="padding-top: 15px; padding-bottom: 10px;">
                   <%= f.submit "Submit", :class => 'button btn btn-success form-control' %>
                 </div>
               <% end %>

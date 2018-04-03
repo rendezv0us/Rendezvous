@@ -1,14 +1,16 @@
 <div class="text-center">
   <!--  -->
-  <% if current_user.secret %>
-    <h1 style="color: white;">Message</h1>
-  <% else %>
-    <h1>Message</h1>
-  <% end %>
+  <br>
   <div class="container" style="max-width: 800px;">
     <ul class="list-group center text-center">
       <li class="list-group-item">
         <div class="container-fluid">
+          <% if current_user.secret %>
+            <h1 style="color: white;">Message</h1>
+          <% else %>
+            <h1>Message</h1>
+          <% end %>
+          <hr>
           <%= form_for(@m, remote: true) do |f| %>
               <% if @m.errors.any? %>
                   <% @m.errors.full_messages.each do |msg| %>
@@ -18,7 +20,7 @@
               <p><%= @alert %></p>
 
               <!-- Hidden field for receiver of message -->
-              <div class="form-seperation" style="padding-top: 10px;">
+              <div class="form-seperation">
                 <%= f.label :receiver, :class => 'pull-left' %>
                 <%= f.text_field(:receiver, :value => @convo_name, :class => 'form-control') %>
               </div>
@@ -28,7 +30,7 @@
                 <%= f.text_field(:content, :required => true, :class => 'form-control') %>
               </div>
 
-              <div style="padding-top: 15px;">
+              <div style="padding-top: 15px; padding-bottom: 10px;">
                 <%= f.submit "Send", :class => 'button btn btn-default form-control' %>
               </div>
           <% end %>
