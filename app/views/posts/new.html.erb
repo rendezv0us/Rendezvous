@@ -1,5 +1,3 @@
 <% @page_title = "New Post" %>
 
-<% if !current_user.secret %>
-  <%= render 'form', post: @post %>
-<% end %>
+<%= render 'form', post: @post %>
