@@ -27,7 +27,7 @@
                 <% datedpost = mes.created_at.localtime() %>
                   <i class="pull-right"><%= datedpost.strftime("%l:%M%p %m/%d/%Y") %></i>
               <% else %>
-                  <i class="pull-left"><%= datedpost.strftime("%l:%M%p %m/%d/%Y") %></i>
+                  <i class="pull-left"><%= mes.created_at.strftime("%l:%M%p %m/%d/%Y") %></i>
               <% end %>
             </div>
           </li>
