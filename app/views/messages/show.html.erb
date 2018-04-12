@@ -24,19 +24,10 @@
           <li class="list-group-item" style="border-top: 0px; border-bottom: 0px; padding-top: 1px;">
             <div class="container-fluid">
               <% if mes.sender == current_user.username %>
-                <i id="<%= mes.id %>" class="pull-right">
-                  <script type="text/javascript">
-                      document.getElementById("<%= mes.id %>").innerHTML =
-                          new Date("<%= mes.created_at.strftime("%m/%d/%y %H:%M:%S %p") %>").toString();
-                  </script>
-                </i>
+                <% datedpost = mes.created_at.localtime() %>
+                  <i class="pull-right"><%= datedpost.strftime("%l:%M%p %m/%d/%Y") %></i>
               <% else %>
-                <i id="<%= mes.id %>" class="pull-left">
-                  <script type="text/javascript">
-                      document.getElementById("<%= mes.id %>").innerHTML =
-                          new Date("<%= mes.created_at.strftime("%m/%d/%y %H:%M:%S %p") %>").toString();
-                  </script>
-                </i>
+                  <i class="pull-left"><%= datedpost.strftime("%l:%M%p %m/%d/%Y") %></i>
               <% end %>
             </div>
           </li>

@@ -1,3 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<div style="text-align: right;">
+
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn" style="">
+      <i class="material-icons md-36" style="font-size:18px; color: black;">keyboard_arrow_down</i>
+      <i class="material-icons md-36" style="font-size:38px; color: black;">language</i>
+    </button>
+    <div id="myDropdown" class="dropdown-content">
+      <option value="en">English</option>
+      <option value="sp">Spanish</option>
+      <option value="fr">French</option>
+    </div>
+  </div>
+</div>
+
+<script>
+    /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
 <div class="container-fluid text-center" style="padding-bottom: 50px;">
   <div clas="row text-center">
     <div class="col text-center">
@@ -23,3 +67,4 @@
     </div>
   </div>
 </div>
+</html>
