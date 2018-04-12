@@ -6,7 +6,7 @@
       <li class="list-group-item">
         <div class="container-fluid">
           <% if current_user.secret %>
-            <h1 style="color: white;">Message</h1>
+            <h1 style="color: black;">Message</h1>
           <% else %>
             <h1>Message</h1>
           <% end %>
@@ -20,13 +20,15 @@
               <p><%= @alert %></p>
 
               <!-- Hidden field for receiver of message -->
+
               <div class="form-seperation">
-                <%= f.label :receiver, :class => 'pull-left' %>
+                <%= f.label "To", :class => 'pull-left' %>
+
                 <%= f.text_field(:receiver, :value => @convo_name, :class => 'form-control') %>
               </div>
 
               <div class="form-seperation" style="padding-top: 10px;">
-                <%= f.label :content, :class => 'pull-left' %> <br>
+                <%= f.label "Message", :class => 'pull-left' %> <br>
                 <%= f.text_field(:content, :required => true, :class => 'form-control') %>
               </div>
 

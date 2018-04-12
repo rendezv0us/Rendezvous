@@ -3,26 +3,27 @@
     <div class="col text-center">
       <!--  -->
       <% if current_user.secret %>
-      <h1 style = "color: white;">Welcome to Rendezvous</h1>
+        <h1 style = "color: white;">Welcome to Rendezvous</h1>
       <% else %>
-      <h1 style = "color: black;">Welcome to Rendezvous</h1>
-    <% end %>
-      <!--  -->
-      <div class="text-center">
-        <!--  -->
-        <div class="container">
-          <ul class="list-group center text-center ">
-            <li class="list-group-item"> <h4>Recent Posts</h4> </li>
-            <% @posts.first(100).each do |post| %>
+        <h1 style = "color: black;">Welcome to Rendezvous</h1>
+
+        <div class="text-center">
+          <!--  -->
+          <div class="container">
+            <ul class="list-group center text-center ">
+              <li class="list-group-item"> <h4>Recent Posts</h4> </li>
+              <% @posts.first(100).each do |post| %>
                 <li class="list-group-item">
                   <div class="container-fluid">
                     <%= link_to post.title.capitalize, post_path(post) %>
                   </div>
                 </li>
-            <% end %>
-          </ul>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
+      <% end %>
+      <!--  -->
     </div>
   </div>
 </div>
