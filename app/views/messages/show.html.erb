@@ -23,10 +23,11 @@
 
           <li class="list-group-item" style="border-top: 0px; border-bottom: 0px; padding-top: 1px;">
             <div class="container-fluid">
+              <% datedpost = mes.created_at.localtime() %>
               <% if mes.sender == current_user.username %>
-                  <i class="pull-right"><%= mes.created_at.strftime("%I:%M %p %b %d") %></i>
+                  <i class="pull-right"><%= datedpost.strftime("%l:%M%p %m/%d/%Y") %></i>
               <% else %>
-                  <i class="pull-left"><%= mes.created_at.strftime("%I:%M %p %b %d") %></i>
+                  <i class="pull-left"><%= datedpost.strftime("%l:%M%p %m/%d/%Y") %></i>
               <% end %>
             </div>
           </li>

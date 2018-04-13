@@ -20,6 +20,8 @@ class PostsController < ApplicationController
     @post = Post.new
     if current_user == nil
       redirect_to explore_home_url
+    elsif current_user.secret
+      redirect_to explore_profile_url
     end
   end
 

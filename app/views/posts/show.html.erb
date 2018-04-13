@@ -11,7 +11,8 @@
                 <h3><%= @post.title %></h3>
               </div>
               by: <strong><%= @post.owner %></strong>
-              on: <%= @post.created_at.strftime('%m-%d-%Y') %>
+              <% datedpost = @post.created_at.localtime() %>
+              on: <%= datedpost.strftime('%m-%d-%y') %>
             </li>
             <li class="list-group-item">
               <div class="post-body">
@@ -36,7 +37,7 @@
                       <%= link_to "Delete", post_path(@post),
                                   method: :delete,
                                   data: {confirm: 'Are you sure?'},
-                                  :class => "btn btn-default"%>
+                                  :class => "delete-btn btn btn-default"%>
                     </div>
                 <% end %>
               </div>

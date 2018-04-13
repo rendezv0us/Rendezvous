@@ -1,9 +1,12 @@
 <div class="text-center">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
-  <div class="container" style="max-width: 800px;">
+  <br>
+  <div class="container" style="max-width: 800px; background-color: #eaeaea">
+    <br>
+
     <ul class="list-group center text-center">
       <li class="list-group-item">
         <div class="container-fluid">
+          <h2>Edit <%= resource_name.to_s.humanize %></h2><hr>
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= devise_error_messages! %>
 
@@ -17,11 +20,10 @@
             <% end %>
 
             <div class="form-seperation" style="padding-top: 10px;">
-              <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+              <%= f.label :password %> <strong>change</strong>
+              <em>(<%= @minimum_password_length %> characters minimum)</em><br />
               <%= f.password_field :password, autocomplete: "off" %>
               <% if @minimum_password_length %>
-                <br />
-                <em><%= @minimum_password_length %> characters minimum</em>
               <% end %>
             </div>
 
@@ -31,18 +33,20 @@
             </div>
 
             <div class="form-seperation" style="padding-top: 10px;">
-              <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+              <%= f.label :current_password %><br />
               <%= f.password_field :current_password, autocomplete: "off" %>
             </div>
 
-            <div class="form-seperation" style="padding-top: 10px;">
-              <%= f.submit "Update" %>
+            <div class="form-seperation" style="padding-top: 15px;">
+              <%= f.submit "Update", :class => 'btn-update' %>
             </div>
           <% end %>
-
-          <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
+          <div class="form-seperation" style="padding-top: 15px;">
+           <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => 'btn-cancel' %>
+          </div>
+          <div class="form-seperation" style="padding-top: 15px;">
           <%= link_to "Back", :back %>
+          </div>
         </div>
       </li>
     </ul>

@@ -1,5 +1,9 @@
 class ExploreController < ApplicationController
   def home
+    if current_user.secret
+      redirect_to messages_new_path
+    end
+
     @posts = nil
     if current_user.secret
       @posts = Post.where(owner: current_user.username)
