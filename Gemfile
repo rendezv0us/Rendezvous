@@ -31,6 +31,9 @@ gem 'autoprefixer-rails'
 # Devise auth gem
 gem 'devise'
 
+# Active Admin gem
+gem 'activeadmin'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
