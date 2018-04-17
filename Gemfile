@@ -64,3 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Language changer
 gem 'language-select', '~> 1.1', '>= 1.1.1'
+
+# Random literate phrase and sentence generator
+gem 'literate_randomizer'
