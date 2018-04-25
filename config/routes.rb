@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   get 'messages/check/:convo' => 'messages#check'
 
+  post 'messages/delete_convo' => 'messages#delete_convo', as: :delete_convo
+
   resources :posts
+  get 'populate' => 'posts#populate'
   get 'explore/home'
   get 'explore/profile'
   get 'home/index'

@@ -18,6 +18,12 @@ class MessagesController < ApplicationController
   def show
     @new_m = Message.new
     @m = Message.find(params[:id])
+    @recipient = if @m.receiver != current_user.username
+                   @m.receiver
+                 else
+                   @m.sender
+                 end
+
     if  @m.convo_id != gen_convo_id(@m.sender, current_user.username) &&
         @m.convo_id != gen_convo_id(current_user.username, @m.receiver)
       redirect_to home_index_path
@@ -61,6 +67,15 @@ class MessagesController < ApplicationController
   end
 
   def edit
+  end
+
+  # DELETE /posts/1
+  # DELETE /posts/1.json
+  def delete_convo
+    @receiver = params[:receiver]
+    @convo_id = gen_convo_id(current_user.username, @receiver)
+    Message.where(:convo_id => @convo_id).destroy_all
+    redirect_to messages_new_path
   end
 
 

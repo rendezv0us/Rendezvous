@@ -4,6 +4,10 @@
     <ul class="list-group center text-center">
       <li class="list-group-item">
         <h4>
+          <%= form_tag(delete_convo_url, {method: 'post'}) do %>
+              <%= text_field_tag :receiver,'', :value => @recipient, :class => "hidden" %>
+              <%= submit_tag('X', :class => "close", :onclick => "return confirm('This will delete your conversation with #{@recipient}. Do you wish to continue?')") %>
+          <% end %>
         <%= @convo_name = @m.sender == current_user.username ? @m.receiver : @m.sender %>
         </h4>
       </li>

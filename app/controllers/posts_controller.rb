@@ -7,6 +7,20 @@ class PostsController < ApplicationController
     redirect_to explore_home_url
   end
 
+  def populate
+    for i in 0...10 do
+      @post = Post.new
+      @r = Random.new
+      @post.owner = LiterateRandomizer.word + LiterateRandomizer.word + @r.rand(100).to_s
+      @post.title = LiterateRandomizer.sentence
+      @post.body = LiterateRandomizer.paragraph
+      @post.private = false
+      @post.save
+    end
+
+    return index
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
