@@ -52,8 +52,8 @@
 <div class="dropdown" style="float:right;">
   <button class="dropbtn"><i class="material-icons md-36" style="font-size:35px; color: black;">language</i></button>
   <div class="dropdown-content">
-    <a rel="alternate" hreflang="en" href="<%= home_index_path  %>">English</a>
-    <a rel="alternate" hreflang="es" href="<%= home_es_index_path  %>">Spanish</a>
+    <a rel="alternate" hreflang="en" href="<%= home_index_path  %>">Inglés</a>
+    <a rel="alternate" hreflang="es" href="<%= home_es_index_path  %>">Español</a>
   </div>
 </div>
 
@@ -68,14 +68,16 @@
         <div class="container">
           <ul class="list-group center text-center ">
             <li class="list-group-item">
-              <h4>Connect with people no matter where you are! <%= @message %></h4>
+              <h4>¡Conéctate con personas sin importar dónde estés! <%= @message %></h4>
             </li>
             <li class="list-group-item login-btn-container">
-              <%= link_to('Login', new_user_session_path , :class => 'btn btn-success home-btn') %>
+              <!-- Login -->
+              <%= link_to('Iniciar sesión', new_user_session_path , :class => 'btn btn-success home-btn') %>
 
             </li>
             <li class="list-group-item login-btn-container" style="padding-bottom: 20px;">
-              <%= link_to('Sign up', new_user_registration_path , :class => 'btn btn-info home-btn') %>
+              <!-- Sign up -->
+              <%= link_to('Regístrate', new_user_registration_path , :class => 'btn btn-info home-btn') %>
             </li>
           </ul>
         </div>

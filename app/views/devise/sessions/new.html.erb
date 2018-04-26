@@ -1,6 +1,9 @@
 <div class="container-fluid text-center" style="padding-bottom: 50px;">
   <div clas="row text-center">
     <div class="col text-center">
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      </head>
       <!--  -->
       <a href="<%= home_index_path  %>">
         <h1> <%= image_tag "rendezvous-title.png", :class => 'title' %> </h1>
@@ -11,7 +14,35 @@
         <div class="container">
           <ul class="list-group center text-center ">
             <li class="list-group-item">
-              <h2>Log in</h2>
+              <h2 style="padding-left: 65px">Log in
+                <a class="trigger_popup_fricc"><i class="material-icons md-36" style="font-size:20px; color: black;">help</i></a>
+                <div class="hover_bkgr_fricc">
+                  <span class="helper"></span>
+                  <div>
+                    <div class="popupCloseButton" style="text-align-all: center">
+                      <i class="material-icons md-36" style="font-size:25px; color: black;">highlight_remove</i></div>
+                    <h1>Help</h1>
+                    <p>
+                      <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    </p>
+                  </div>
+                </div>
+
+                <script>
+                    $(window).load(function () {
+                        $(".trigger_popup_fricc").click(function(){
+                            $('.hover_bkgr_fricc').show();
+                        });
+                        $('.hover_bkgr_fricc').click(function(){
+                            $('.hover_bkgr_fricc').hide();
+                        });
+                        $('.popupCloseButton').click(function(){
+                            $('.hover_bkgr_fricc').hide();
+                        });
+                    });
+
+                </script>
+              </h2>
               <hr>
 
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

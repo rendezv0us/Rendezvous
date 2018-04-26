@@ -11,7 +11,9 @@
           <h2>Forgot your password?</h2>
 
           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-            <%= devise_error_messages! %>
+            <div class="field" style="text-align: center; padding-bottom: 20px; padding-right: 40px; color: #730E15;">
+              <%= devise_error_messages! %>
+            </div>
 
             <div class="form-seperation" style="padding-top: 10px;">
               <%= f.label :email %><br />

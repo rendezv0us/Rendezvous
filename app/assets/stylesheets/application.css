@@ -84,3 +84,58 @@ textarea {
 .dropdown {
     background-color: white;
 }
+
+/* Popup box BEGIN */
+.hover_bkgr_fricc{
+    display:none;
+    height:100%;
+    position:center;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+}
+.hover_bkgr_fricc .helper{
+    display:inline-block;
+    height:100%;
+}
+.hover_bkgr_fricc > div {
+    background-image: url("help_pic.png");
+    background-color: white;
+    background-size: 600px 350px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    max-width: 850px;
+    max-height: 550px;
+    vertical-align: middle;
+    width: 60%;
+    position: relative;
+    border-radius: 8px;
+}
+.popupCloseButton {
+    background-color: #F7F7F7;
+    border-radius: 50px;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 25px;
+    line-height: 20px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+.popupCloseButton:hover {
+    background-color: #ccc;
+}
+.trigger_popup_fricc {
+    font-size: 20px;
+    margin: 20px;
+    display: inline-block;
+    font-weight: bold;
+}
+/* Popup box BEGIN */
