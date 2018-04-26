@@ -4,12 +4,7 @@ class ExploreController < ApplicationController
       redirect_to messages_new_path
     end
 
-    @posts = nil
-    if current_user.secret
-      @posts = Post.where(owner: current_user.username)
-    else
-      @posts = Post.where(private: false)
-    end
+    @posts = Post.where(private: false).order("created_at DESC").first(25)
   end
 
   def profile
